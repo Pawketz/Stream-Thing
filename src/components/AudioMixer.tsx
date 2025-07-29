@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createDeskThing } from '@deskthing/client';
 import '../index.css';
+import { OBSToClient, OBSToServer } from '../types/deskthingTypes';
 
-const DeskThing = createDeskThing();
+const DeskThing = createDeskThing<OBSToClient, OBSToServer>();
 
 export default function AudioMixer() {
-  const [audio, setAudio] = useState<any[]>([]);
+  // added slightly stronger typing here
+  const [audio, setAudio] = useState<{ name: string; volume: number; muted: boolean}[]>([]);
 
   useEffect(() => {
     DeskThing.send({ type: 'getAudio', payload: {} });

@@ -1,4 +1,7 @@
-import { DeskThing } from "@deskthing/server";
+import { createDeskThing } from "@deskthing/server";
+import { OBSToServer, OBSToClient } from "./deskthingTypes";
+
+const DeskThing = createDeskThing<OBSToServer, OBSToClient>();
 
 
 export class obsStore {
@@ -7,12 +10,13 @@ export class obsStore {
     private password?: string;
     private static instance: obsStore | null = null;
 
-    //   static getInstance() {
-    //     if (!obsStore.instance) {
-    //       obsStore.instance = new obsStore();
-    //     }
-    //     return obsStore.instance;
-    // }
+    // it seems you setup instances here - dont know why it was removed
+    static getInstance() {
+        if (!obsStore.instance) {
+            obsStore.instance = new obsStore();
+        }
+        return obsStore.instance;
+    }
 
     public getHost() {
         return this.host;
@@ -36,3 +40,5 @@ export class obsStore {
         return this.password;
     }
 };
+
+export default obsStore.getInstance() // return the instance of the store rather than the store object itself

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { createDeskThing } from '@deskthing/client';
 import '../index.css';
+import { OBSToClient, OBSToServer } from '../types/deskthingTypes';
 
-const DeskThing = createDeskThing();
+const DeskThing = createDeskThing<OBSToClient, OBSToServer>();
 
 export default function SceneGrid() {
   const [scenes, setScenes] = useState<any[]>([]);

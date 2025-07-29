@@ -1,5 +1,5 @@
 import { DeskThing } from '@deskthing/server';
-import { AppSettings, SETTING_TYPES, DESKTHING_EVENTS} from '@deskthing/types';
+import { AppSettings, SETTING_TYPES} from '@deskthing/types';
 
 
 export const  setupSettings = async () => {
