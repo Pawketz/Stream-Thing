@@ -1,9 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { DeskThing } from '@deskthing/client'
+
 import OBSControllerApp from "./components/OBSControllerApp";
-import defaultSettings from '../config/defaultSettings';
 
 import "./index.css";
+
+
 
 const root = document.getElementById("root");
 if (root) {

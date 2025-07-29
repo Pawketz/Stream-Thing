@@ -1,9 +1,10 @@
 // server
 import { DeskThing } from '@deskthing/server';
+import { setupSettings } from './setupSettings';
 import './obsController'; // Integrate OBS controller backend
 
 const startup = () => {
-   DeskThing.send({ type: 'log', payload: 'Starting Up' });
+   setupSettings();
 }
 
 const stop = () => {

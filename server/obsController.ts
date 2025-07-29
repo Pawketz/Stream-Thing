@@ -18,7 +18,7 @@ const OBS_PASSWORD = process.env.OBS_PASSWORD || defaultSettings.password.value;
 async function connectOBS() {
   try {
     await obs.connect(`ws://${OBS_HOST}:${OBS_PORT}`, OBS_PASSWORD);
-    DeskThing.send({ type: 'log', payload: 'Connected to OBS WebSocket' });
+    DeskThing.send({ type: 'log', payload: `Connected to OBS WebSocket ws://${OBS_HOST}:${OBS_PORT}` });
   } catch (err) {
     DeskThing.send({ type: 'log', payload: 'Failed to connect to OBS: ' + err });
     setTimeout(connectOBS, 5000); // Retry after 5s
