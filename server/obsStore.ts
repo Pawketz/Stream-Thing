@@ -5,26 +5,34 @@ export class obsStore {
     private host?: string;
     private port?: number;
     private password?: string;
+    private static instance: obsStore | null = null;
 
-    getHost() {
+    //   static getInstance() {
+    //     if (!obsStore.instance) {
+    //       obsStore.instance = new obsStore();
+    //     }
+    //     return obsStore.instance;
+    // }
+
+    public getHost() {
         return this.host;
     }
-    setHost(host: string) {
+    public setHost(host: string) {
         this.host = host;
         DeskThing.send({ type: 'obsHostUpdated', payload: { host } });
     }
-    setPort(port: number) {
+    public setPort(port: number) {
         this.port = port;
         DeskThing.send({ type: 'obsPortUpdated', payload: { port } });
     }
-    getPort() {
+    public getPort() {
         return this.port;
     }
-    setPassword(password: string) {
+    public setPassword(password: string) {
         this.password = password;
         DeskThing.send({ type: 'obsPasswordUpdated', payload: { password } });
     }
-    getPassword() {
+    public getPassword() {
         return this.password;
     }
 };
