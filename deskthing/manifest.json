@@ -1,0 +1,24 @@
+{
+  "label": "Stream Thing (OBS Remote)",
+  "tags": [
+    "webappOnly"
+  ],
+  "requires": [],
+  "version": "0.11.3",
+  "requiredVersions": {
+    "server": ">=0.0.0",
+    "client": ">=0.11.2"
+  },
+  "description": "None",
+  "author": "Pawketz",
+  "platforms": [
+    "windows",
+    "linux",
+    "mac"
+  ],
+  "repository": "https://github.com/Pawketz/Stream-Thing",
+  "homepage": "https://www.pawketz.com",
+  "updateUrl": "https://github.com/Pawketz/Stream-Thing",
+  "id": "stream-thing",
+  "template": "min"
+}
