@@ -74,8 +74,8 @@ DeskThing.on('switchScene', async (data) => {
 // DeskThing event: Get sources
 DeskThing.on('getSources', async () => {
   try {
-    const { sources } = await obs.call('GetInputList');
-    DeskThing.send({ type: 'sources', payload: sources });
+    const { inputs } = await obs.call('GetInputList');
+    DeskThing.send({ type: 'sources', payload: inputs });
   } catch (err) {
     DeskThing.send({ type: 'log', payload: 'Failed to get sources: ' + err });
   }

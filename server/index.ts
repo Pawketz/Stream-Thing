@@ -17,27 +17,32 @@ const startup = async () => {
 // const obsStoreInstance = new obsStore();
 
 DeskThing.on(DESKTHING_EVENTS.SETTINGS, (settings) => {
-  // Syncs the data with the server
   if (settings && settings.payload) {
-    console.debug("Settings updating");
-    // Ensure host is a string
-    obsStore.setHost(settings.payload.host.value?.toString() ?? "");
-    obsStore.setPort(Number(settings.payload.port.value));
-    obsStore.setPassword(settings.payload.password.value?.toString() ?? "");
-    // You can also update port and password here if needed:
-    // if (settings.payload.port !== undefined) obsStoreInstance.setPort(Number(settings.payload.port));
-    // if (settings.payload.password !== undefined) obsStoreInstance.setPassword(settings.payload.password?.toString() ?? "");
+    const host = settings.payload.host.value?.toString() ?? "";
+    const port = Number(settings.payload.port.value);
+    const password = settings.payload.password.value?.toString() ?? "";
+
+    // Basic validation
+    if (!host || isNaN(port) || port <= 0) {
+      console.error("Invalid OBS connection settings:", { host, port });
+      return;
+    }
+
+    console.debug("Settings updating:", { host, port });
+    obsStore.setHost(host);
+    obsStore.setPort(port);
+    obsStore.setPassword(password);
   } else {
     console.warn("Settings payload is missing");
   }
 });
 
 const stop = () => {
-    DeskThing.send({ type: 'log', payload: 'Stopping app' }); // i see several things sending type: 'log' - if this is for normal logging, try just doing `console.log()` instead as it's treated the same way
+    console.log('Stopping app');
 }
 
 const purge = () => {
-    DeskThing.send({ type: 'log', payload: 'Purging app' });
+    console.log('Purging app');
 }
 
 

@@ -1,7 +1,7 @@
 const defaultSettings = {
-  host: { value: 'localhost' },
-  port: { value: 4455 },
-  password: { value: 'password' },
+  host: { value: '' },
+  port: { value: 0 },
+  password: { value: 'default' },
 };
 
 export default defaultSettings;
