@@ -8,9 +8,13 @@ import obsStore from "./obsStore";
 import { DeskThing } from '@deskthing/server';
 import { setupSettings } from './setupSettings';
 import './obsController'; // Integrate OBS controller backend
+import { createLogger } from "vite";
 
 const startup = async () => {
-   await setupSettings();
+  console.log("Inside startup function in index.ts");
+  await obsStore.connect(); // Connect to OBS when DeskThing starts
+  console.log("Connected to OBS:", obsStore.isConnected());
+  await setupSettings();
 }
 
 // Create a singleton instance of obsStore
@@ -39,10 +43,14 @@ DeskThing.on(DESKTHING_EVENTS.SETTINGS, (settings) => {
 
 const stop = () => {
     console.log('Stopping app');
+    obsStore.disconnect(); // Disconnect OBS when DeskThing stops
+    console.log('OBS Instance stopped');
 }
 
 const purge = () => {
     console.log('Purging app');
+    obsStore.disconnect(); // Disconnect OBS when DeskThing stops
+    console.log('OBS Instance stopped');
 }
 
 

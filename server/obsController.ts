@@ -1,52 +1,16 @@
 // OBS Controller Backend for DeskThing
 // Requires: npm install obs-websocket-js
-
+import { DESKTHING_EVENTS } from "@deskthing/types";
 import { createDeskThing } from '@deskthing/server';
-import OBSWebSocket from 'obs-websocket-js';
-import defaultSettings from '../src/stores/defaultSettings.js';
 import { OBSToClient, OBSToServer } from './deskthingTypes.js';
-import { DESKTHING_EVENTS } from '@deskthing/types';
 import obsStore from './obsStore.js';
 
 // This is done in the emulator for development. See deskthing.config.js
 // dotenv.config(); // Load environment variables from .env file   
 
-const obs = new OBSWebSocket();
-
 const DeskThing = createDeskThing<OBSToServer, OBSToClient>();
 
-// OBS connection config
-const OBS_HOST = /* process.env.OBS_HOST  || */ defaultSettings.host.value;
-const OBS_PORT = /* process.env.OBS_PORT  || */ defaultSettings.port.value;
-const OBS_PASSWORD = /* process.env.OBS_PASSWORD  || */ defaultSettings.password.value;
-
-// setup the obsStore values with the default - once you get in here, I would change this to happen within the obsStore inside the constructor
-// I have it defined here so you can see what it's doing - but I wouldn't recommend it
-obsStore.setHost(OBS_HOST);
-obsStore.setPort(OBS_PORT);
-obsStore.setPassword(OBS_PASSWORD);
-
-
-// While this works, i would "own" the obs object inside the obsStore - and then when the settings are updated from deskthing, try to authenticate. This way we can keep track of auth status as well as update things as needed
-async function connectOBS() {
-  try {
-    const port = obsStore.getPort();
-    const host = obsStore.getHost();
-    const password = obsStore.getPassword();
-
-    console.log(`Connecting to OBS WebSocket at ws://${host}:${port} with password ${password ? 'set' : 'not set'}`);
-    await obs.connect(`ws://${host}:${port}`, password);
-    DeskThing.send({ type: 'log', payload: `Connected to OBS WebSocket ws://${host}:${port}` });
-  } catch (err) {
-    DeskThing.send({ type: 'log', payload: 'Failed to connect to OBS: ' + (err instanceof Error ? err.message : err.toString()) });
-    console.log(err)
-
-    setTimeout(connectOBS, 5000); // Retry after 5s
-  }
-}
-
-// I get the feeling this should be inside the deskthing.start() callback rather than surface level - otherwise this will never be disconnected
-connectOBS();
+const obs = obsStore; // Get the singleton instance of obsStore
 
 // DeskThing event: Get scenes
 DeskThing.on('getScenes', async (data) => {
@@ -163,16 +127,15 @@ DeskThing.on('setStreaming', async (data) => {
 
 // TODO: Add preview image sending if feasible
 
-DeskThing.on(DESKTHING_EVENTS.START, () => {
-  DeskThing.send({ type: 'log', payload: 'OBS Controller App Started' });
-});
+// DeskThing.on(DESKTHING_EVENTS.START, () => {
+//   DeskThing.send({ type: 'log', payload: 'OBS Controller App Started' });
+// });
 
-DeskThing.on(DESKTHING_EVENTS.STOP, () => {
-  DeskThing.send({ type: 'log', payload: 'OBS Controller App Stopped' });
-  obs.disconnect();
-});
+// DeskThing.on(DESKTHING_EVENTS.STOP, () => {
+//   DeskThing.send({ type: 'log', payload: 'OBS Controller App Stopped' });
+// });
 
 DeskThing.on(DESKTHING_EVENTS.PURGE, () => {
   DeskThing.send({ type: 'log', payload: 'OBS Controller App Purged' });
-  obs.disconnect();
+  console.log('Purging OBS Controller App');
 });

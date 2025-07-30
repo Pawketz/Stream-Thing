@@ -1,5 +1,5 @@
 const defaultSettings = {
-  host: { value: '' },
+  host: { value: 'default-host' },
   port: { value: 0 },
   password: { value: 'default' },
 };
