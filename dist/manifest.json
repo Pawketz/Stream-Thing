@@ -1,0 +1,23 @@
+{
+  "id": "stream-thing",
+  "requires": [],
+  "label": "Stream Thing",
+  "version": "0.11.3",
+  "description": "None",
+  "author": "Pawketz",
+  "platforms": [
+    "windows",
+    "linux",
+    "mac"
+  ],
+  "homepage": "https://www.pawketz.com",
+  "repository": "https://github.com/Pawketz/Stream-Thing",
+  "template": "min",
+  "tags": [
+    "webappOnly"
+  ],
+  "requiredVersions": {
+    "server": ">=0.11.13",
+    "client": ">=0.11.2"
+  }
+}

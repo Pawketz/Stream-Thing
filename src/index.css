@@ -1,3 +1,157 @@
+.obs-reset, html, body, #root, .obs-app-root, .obs-panel, .obs-nav {
+  box-sizing: border-box;
+}
+
+/* CSS Reset */
+html, body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: #10171d;
+  color: #6ffaff;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+/* Remove unwanted body flex centering */
+body {
+  display: block;
+  justify-content: unset;
+  align-items: unset;
+  background-color: #10171d;
+}
+.obs-app-root {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background: #10171d;
+  color: #6ffaff;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+.obs-panel {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 2rem 1.5rem 2rem 2rem;
+}
+
+.obs-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding: 2rem 1rem;
+  gap: 1rem;
+  background: #0c1318;
+  min-width: 140px;
+  max-width: 140px;
+  width: 140px;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.obs-nav-btn {
+  width: 120px;
+  height: 60px;
+  background: #18242c;
+  color: #6ffaff;
+  border: 2px solid #1e2c36;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.obs-nav-btn.active {
+  background: #0c1318;
+  color: #6ffaff;
+  border: 2px solid #6ffaff;
+}
+.obs-nav-btn:focus {
+  outline: none;
+  border-color: #6ffaff;
+}
+
+/* SceneGrid styles */
+.scene-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+}
+.scene-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #6ffaff;
+}
+.scene-grid-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.2rem;
+  width: 100%;
+  overflow-y: auto;
+  padding-bottom: 2rem;
+}
+.scene-btn {
+  background: #18242c;
+  color: #6ffaff;
+  border: 2px solid #1e2c36;
+  border-radius: 14px;
+  font-size: 1.3rem;
+  font-weight: 500;
+  width: 100%;
+  height: 80px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+.scene-btn.active {
+  background: #0c1318;
+  color: #6ffaff;
+  border: 2px solid #6ffaff;
+}
+.scene-btn:focus {
+  outline: none;
+  border-color: #6ffaff;
+}
+
+/* Example for dulled source button (add to SourceControls) */
+.source-btn {
+  background: #18242c;
+  color: #6ffaff;
+  border: 2px solid #1e2c36;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  width: 100%;
+  height: 60px;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  opacity: 1;
+  transition: background 0.2s, color 0.2s, border 0.2s, opacity 0.2s;
+}
+.source-btn.inactive {
+  opacity: 0.5;
+  border: 2px solid #ff3b3b;
+  color: #ff3b3b;
+}
 body {
     width: 100vw;
     height: 100vh;

@@ -25,12 +25,12 @@ export default function SceneGrid() {
 
   return (
     <div className="scene-grid">
-      <h2>Scenes</h2>
-      <div className="grid">
+      <h2 className="scene-title">Scenes</h2>
+      <div className="scene-grid-list">
         {scenes.map(scene => (
           <button
             key={scene.sceneName}
-            className={scene.sceneName === current ? 'active' : ''}
+            className={`scene-btn${scene.sceneName === current ? ' active' : ''}`}
             onClick={() => switchScene(scene.sceneName)}
           >
             {scene.sceneName}

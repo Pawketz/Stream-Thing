@@ -24,7 +24,7 @@ export const  setupSettings = async () => {
             description: `The password for the OBS Websocket. Find in OBS under 
                             Tools -> WebSocket Server Settings -> Show Connect Info.`,
             label: 'Password',
-            value: 'default',
+            value: 'password',
         },
     }
     DeskThing.initSettings(Settings);
