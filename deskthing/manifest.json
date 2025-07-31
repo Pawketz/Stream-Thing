@@ -3,7 +3,7 @@
   "requires": [],
   "label": "Stream Thing",
   "version": "0.11.3",
-  "description": "None",
+  "description": "OBS scene switcher for DeskThing",
   "author": "Pawketz",
   "platforms": [
     "windows",

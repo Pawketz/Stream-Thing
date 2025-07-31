@@ -3,7 +3,7 @@
   "meta_type": "app",
   "repository": "https://github.com/Pawketz/Stream-Thing",
   "icon": "",
-  "size": 315161,
+  "size": 315789,
   "appManifest": {
     "id": "stream-thing",
     "requires": [],
@@ -28,9 +28,9 @@
     }
   },
   "updateUrl": "https://github.com/Pawketz/Stream-Thing/releases/latest/download/stream-thing-v0.11.3.zip",
-  "hash": "1253ad572f5586934bccc65daab2298aa454328c9e6e78216fb53be583da98b724009b9959133c8da0ad7d71241ca178695558afaf09b3904d254fb28c4537d4",
+  "hash": "edc610118882f0df79a7b9f92a39fb639351aa801f3614c496a66f03e1b65e88a1d94fa3cdb43cadb4b60212ccbfff1cf063fa6e48f771c63d11ce06f5d084d8",
   "hashAlgorithm": "sha512",
-  "updatedAt": 1753912511437,
-  "createdAt": 1753912511437,
+  "updatedAt": 1753922696901,
+  "createdAt": 1753922696901,
   "downloads": 0
 }
